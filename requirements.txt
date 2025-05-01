@@ -1,0 +1,12 @@
+#TODO: pin the versions of the packages
+fastapi
+uvicorn
+face_recognition
+opencv-python-headless
+numpy
+pillow
+aiofiles
+python-multipart
+onnxruntime-gpu
+torch
+torchvision
