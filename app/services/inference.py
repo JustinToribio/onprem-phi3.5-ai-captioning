@@ -21,16 +21,15 @@ def run_caption_inference(image, user_prompt=user_prompt):
     inputs = processor(prompt, [image], return_tensors="pt").to("cuda")
 
     # Define generation parameters
-    # do_sample: False - Picks the token with the highest probability (greedy decoding)
+    # do_sample: False - Picks the token with the highest probability (greedy decoding). Temperature does nothing when this is False.
     # do_sample: True - Samples from the probability distribution (based on temperature, top_k, top_p, etc.)
-    # temperature: (float) 0.0 - Greedy and deterministic (always picks the most likely next token)
+    # temperature: (float, only works if do_sample: True) 0.0 - Greedy and deterministic (always picks the most likely next token)
     # temperature: ~0.7 - Balanced creativity and coherence (default for many models)
     # temperature: >1.0 - High randomness and creativity (can get chaotic or incoherent)
     # If you're running into OOM issues, reduce max_new_tokens
     generation_args = {
         "max_new_tokens": 100,
-        "temperature": 0.0,
-        "do_sample": False,
+        "do_sample": False
     }
 
     # Generate output token ID's from the inputs
