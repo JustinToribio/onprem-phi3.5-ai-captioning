@@ -1,12 +1,11 @@
-#TODO: pin the versions of the packages
-fastapi
-uvicorn
-face_recognition
-opencv-python-headless
-numpy
-pillow
-aiofiles
-python-multipart
-onnxruntime-gpu
-torch
-torchvision
+torch==2.7.0
+torchvision==0.22.0
+transformers==4.43.0
+accelerate==1.6.0
+numpy==2.2.5
+matplotlib==3.10.1
+pillow==11.2.1
+requests==2.32.3
+fastapi==0.115.12
+python-multipart==0.0.20
+uvicorn==0.34.2
