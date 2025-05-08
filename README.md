@@ -72,17 +72,18 @@ cd onprem-phi3.5-ai-captioning
 ```
 
 ### 2. Start the app using Docker Compose
+- Make sure Docker Engine is running (i.e. Docker Desktop is open etc...)
 ```bash
 docker compose up
 ```
 
 > ✅ On first run, the Docker Image will be built (~6.8GB) and then Docker will start the container app from that image.  The Phi-3.5 model (~7.8GB) will be downloaded and cached at `~/.cache/huggingface/hub`.  
 > ✅ On subsequent runs, assuming nothing has changed, the containerized app will run from that same Docker image and the Phi-3.5 model will be loaded from the cache.
-* Wait for the model to finish loading
+- Wait for the model to finish loading
 
 ### 3. Test the endpoint
 
-From a different command line shell, send a POST request with an image using `curl`:
+From a different command line shell terminal, send a POST request with an image using `curl`:
 
 ```bash
 curl -X POST http://localhost:8000/infer \
@@ -100,7 +101,7 @@ After you're done testing...
 ### 4. Shut down the app
 
 ```
-CTRL+C   # From the terminal where you launched the app and can see the live logs
+CTRL+C   # From the shell terminal where you launched the app and can see the live logs
 ```
 
 ### 5. Stop and remove the Docker Container
