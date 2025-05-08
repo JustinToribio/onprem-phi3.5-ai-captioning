@@ -1,0 +1,21 @@
+services:
+  phi3-caption-app:
+    image: phi3-caption-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+    # Mount the local huggingface model cache to the container's
+      - ${HOME}/.cache/huggingface:/root/.cache/huggingface
+    environment:
+    # Tells Hugging Face to explicitly use the correct mounted directory as the model cache directory
+      - TRANSFORMERS_CACHE=/root/.cache/huggingface/hub
