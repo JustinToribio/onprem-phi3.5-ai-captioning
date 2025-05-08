@@ -48,7 +48,7 @@ cd onprem-phi3.5-ai-captioning
 docker compose up
 ```
 
-> ✅ On first run, the Docker Image will be built (~6.8GB) and then Docker will start the container app from that image.  The Phi-3.5 model (~7.8GB) will be downloaded and cached.  
+> ✅ On first run, the Docker Image will be built (~6.8GB) and then Docker will start the container app from that image.  The Phi-3.5 model (~7.8GB) will be downloaded and cached at `~/.cache/huggingface/hub`.  
 > ✅ On subsequent runs, assuming nothing has changed, the containerized app will run from that same Docker image and the Phi-3.5 model will be loaded from the cache.
 * Wait for the model to finish loading
 
