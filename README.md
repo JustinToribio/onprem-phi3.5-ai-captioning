@@ -6,13 +6,13 @@ A high-performance, on-premises FastAPI application for image captioning using M
 
 ## 📚 Table of Contents
 - [Introduction](#introduction)
+- [Sample Output](#sample-output)
 - [System Requirements](#system-requirements)
 - [Running the App with Docker](#running-the-app-with-docker)
-- [Sample Output](#sample-output)
 
 ---
 
-## 🚀 Introduction
+## Introduction
 
 This app loads the Phi-3.5 Vision model once at startup and exposes an `/infer` REST endpoint via FastAPI. You can send image files as POST requests or through FastAPI's browser based Swagger UI and receive intelligent captions in response.
 
@@ -24,7 +24,33 @@ Key features:
 
 ---
 
-## 🛠️ System Requirements
+## Sample Output 
+
+Example image sent to the `/infer` endpoint:
+
+![Sample Output](images/nba_2.jpg)
+
+Response:
+```json
+{
+  "caption": "The image captures a moment from a basketball game between the Los Angeles Lakers and the Golden State Warriors. The players are in the midst of a play, with the Lakers in purple and the Warriors in white. The crowd is visible in the background, and the game is being broadcasted on TNT."
+}
+```
+
+Example image sent to the `/infer` endpoint:
+
+![Sample Output](images/car.jpg)
+
+Response:
+```json
+{
+  "caption": "The image shows a silver BMW i8 sports car parked in a parking lot. The car has a distinctive design with a low and wide stance, a large front grille, and a futuristic look with sharp angles and a sleek body. The BMW logo is visible on the front of the car."
+}
+```
+
+---
+
+## System Requirements
 
 - NVIDIA GPU that can support **CUDA 12.6**
     -  According to the Phi-3.5 model card, it was tested on A100, A6000 and H100 gpus
@@ -37,7 +63,7 @@ Key features:
 
 ---
 
-## 🐳 Running the App with Docker
+## Running the App with Docker
 
 ### 1. Clone the repo
 ```bash
@@ -84,27 +110,3 @@ docker compose down
 ```
 
 ---
-
-## 🧪 Sample Output
-
-Example image sent to the `/infer` endpoint:
-
-![Sample Output](images/nba_2.jpg)
-
-Response:
-```json
-{
-  "caption": "The image captures a moment from a basketball game between the Los Angeles Lakers and the Golden State Warriors. The players are in the midst of a play, with the Lakers in purple and the Warriors in white. The crowd is visible in the background, and the game is being broadcasted on TNT."
-}
-```
-
-Example image sent to the `/infer` endpoint:
-
-![Sample Output](images/car.jpg)
-
-Response:
-```json
-{
-  "caption": "The image shows a silver BMW i8 sports car parked in a parking lot. The car has a distinctive design with a low and wide stance, a large front grille, and a futuristic look with sharp angles and a sleek body. The BMW logo is visible on the front of the car."
-}
-```
