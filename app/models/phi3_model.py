@@ -1,5 +1,7 @@
 from transformers import AutoModelForCausalLM, AutoProcessor
 from app.core.config import model_id
+import gc
+import torch
 
 # Offical docs on the inference code below: https://huggingface.co/microsoft/Phi-3.5-vision-instruct
 
@@ -9,11 +11,13 @@ class Phi3Model:
     _model = None
     _processor = None
 
+    # Allow method to be called without instantiating the class
     @classmethod
     def load(cls):
         # If not already loaded, load the model and processor once
         # Model and artifacts are downloaded to ~/.cache/huggingface
         if cls._model is None or cls._processor is None:
+            print("loading model and processor...")
             cls._model = AutoModelForCausalLM.from_pretrained(
                 model_id,
                 device_map="cuda",               # Load model onto GPU
@@ -29,5 +33,25 @@ class Phi3Model:
                 trust_remote_code=True,
                 num_crops=4
             )
+            print("model and processor loaded.")
         # Always return the same in-memory model and processor (singleton behavior)
         return cls._model, cls._processor
+    
+    @classmethod
+    def unload(cls):
+        if cls._model is not None or cls._processor is not None:
+            # Unload model and processor from memory
+            print("Unloading model and processor from memory...")
+            del cls._model
+            del cls._processor
+            cls._model = None
+            cls._processor = None
+
+            # Force garbage collection
+            gc.collect()
+
+            # Clear GPU memory (if CUDA is available)
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                torch.cuda.ipc_collect()
+            print("Resources released.")
