@@ -17,10 +17,11 @@ A high-performance, on-premises FastAPI application for image captioning using M
 This app loads the Phi-3.5 Vision model once at startup and exposes an `/infer` REST endpoint via FastAPI. You can send image files as POST requests or through FastAPI's browser based Swagger UI and receive intelligent captions in response.
 
 Key features:
-- 🔥 GPU-accelerated inference with PyTorch + CUDA
+- 🧠 AI generated metadata on media image assets (auto-captions)
+- 🧩 Modular architecture and REST API (FastAPI, async, singleton pattern)
+- 🐳 Fully containerized with Docker and Docker Compose in a Linux + Python based environment
+- 🔥 GPU-accelerated Phi-3.5 Vision inference with CUDA + PyTorch
 - 📦 Efficient Hugging Face model caching
-- 🧩 Modular architecture (FastAPI, async, singleton pattern)
-- 🐳 Fully containerized with Docker and Docker Compose
 
 ---
 
