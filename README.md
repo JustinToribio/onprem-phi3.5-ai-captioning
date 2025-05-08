@@ -86,7 +86,7 @@ docker compose up
 From a different command line shell terminal, send a POST request with an image using `curl`:
 
 ```bash
-curl -X POST http://localhost:8000/infer \
+curl -X POST "http://localhost:8000/infer" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@<path_to_local_image>.jpg"
 ```
