@@ -56,7 +56,7 @@ Response:
     -  According to the Phi-3.5 model card, it was tested on A100, A6000 and H100 gpus
     - My local machine only has a Quadro P1000 (4 GB RAM) and it's able to successfully run the inference. However, I had to adjust several model parameters to reduce memory usage to avoid out-of-memory issues (as currently set in this repo, i.e. max_tokens, number of patches etc...). As a result, my machine can only handle 1 image at a time and inference is quite slow... but it works.
 - Correct NVIDIA driver based on your gpu: https://www.nvidia.com/en-us/drivers/
-- Docker Engine that runs a Linux kernel: https://docs.docker.com/engine/install/
+- Docker Engine that runs a Linux kernel: https://docs.docker.com/engine/install/ or https://docs.docker.com/desktop/
 - NVIDIA Container Toolkit: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 - Docker Compose v2
 
