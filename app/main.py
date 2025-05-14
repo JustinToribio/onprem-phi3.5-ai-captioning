@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+from app.core.config import get_settings
 from app.api.routes_agent import router as agent_router
 from app.models.phi3_model import Phi3Model
 import uvicorn
@@ -9,7 +10,8 @@ import uvicorn
 async def lifespan(app: FastAPI):
     # Startup logic
     print("App starting up...")
-    Phi3Model.load()  # Load the model once before the app starts serving
+    settings = get_settings()
+    Phi3Model.load(settings.model_id)  # Load the model once before the app starts serving
 
     yield
     # Shutdown logic, yields control back to the FastAPI app

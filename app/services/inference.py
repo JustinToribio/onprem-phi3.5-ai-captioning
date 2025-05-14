@@ -1,8 +1,7 @@
 from app.models.phi3_model import Phi3Model
-from app.core.config import user_prompt
 
-def run_caption_inference(image, user_prompt=user_prompt):
-    model, processor = Phi3Model.load()
+def run_caption_inference(image, user_prompt, model_id):
+    model, processor = Phi3Model.load(model_id)
 
     # Offical docs on the inference code below: https://huggingface.co/microsoft/Phi-3.5-vision-instruct
 

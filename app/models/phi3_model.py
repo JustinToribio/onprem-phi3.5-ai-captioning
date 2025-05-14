@@ -1,5 +1,4 @@
 from transformers import AutoModelForCausalLM, AutoProcessor
-from app.core.config import model_id
 import gc
 import torch
 
@@ -10,16 +9,18 @@ class Phi3Model:
     # When the model and processor are loaded for the first time, they'll be stored here
     _model = None
     _processor = None
+    _model_id = None
 
     # Allow method to be called without instantiating the class
     @classmethod
-    def load(cls):
+    def load(cls, model_id: str):
         # If not already loaded, load the model and processor once
         # Model and artifacts are downloaded to ~/.cache/huggingface
-        if cls._model is None or cls._processor is None:
+        if cls._model is None or cls._processor is None or cls._model_id != model_id:
             print("loading model and processor...")
+            cls._model_id = model_id
             cls._model = AutoModelForCausalLM.from_pretrained(
-                model_id,
+                cls._model_id,
                 device_map="cuda",               # Load model onto GPU
                 trust_remote_code=True,           # Enable custom model class
                 torch_dtype="auto",              # Use optimal precision (e.g. bf16)
@@ -29,7 +30,7 @@ class Phi3Model:
             # For best performance, use num_crops=4 for multi-frame, num_crops=16 for single-frame.
             # If you're running into OOM issues, try num_crops=4
             cls._processor = AutoProcessor.from_pretrained(
-                model_id,
+                cls._model_id,
                 trust_remote_code=True,
                 num_crops=4
             )

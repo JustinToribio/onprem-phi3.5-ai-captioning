@@ -1,13 +1,10 @@
-from app.services.caption_service import CaptionService
-from app.services.tagging_service import TaggingService
-from app.services.mam_service import MockMAMClient
 from app.utils.image_io import load_image_from_bytes
 
 class EnrichmentAgent:
-    def __init__(self):
-        self.captioner = CaptionService()
-        self.tagger = TaggingService()
-        self.mam = MockMAMClient()
+    def __init__(self, captioner, tagger, mam):
+        self.captioner = captioner
+        self.tagger = tagger
+        self.mam = mam
 
     def process(self, image_bytes: bytes, asset_id: str):
         image = load_image_from_bytes(image_bytes)

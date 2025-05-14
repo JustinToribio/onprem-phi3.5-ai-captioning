@@ -1,5 +1,10 @@
 from app.services.inference import run_caption_inference
+from app.core.config import Settings
 
 class CaptionService:
+    def __init__(self, settings: Settings):
+        self.prompt = settings.user_prompt
+        self.model_id = settings.model_id
+
     def generate_caption(self, image):
-        return run_caption_inference(image)
+        return run_caption_inference(image, self.prompt, self.model_id)
