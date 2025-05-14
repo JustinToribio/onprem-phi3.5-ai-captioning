@@ -12,6 +12,7 @@ async def lifespan(app: FastAPI):
     print("App starting up...")
     settings = get_settings()
     print("Test mode:", settings.test_mode)
+    print("Max tokens:", settings.max_tokens)
     Phi3Model.load(settings.model_id, test_mode=settings.test_mode)  # Load the model once before the app starts serving
 
     yield

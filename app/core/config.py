@@ -5,6 +5,8 @@ from typing import Dict, List
 class Settings(BaseSettings):
     model_id: str = "microsoft/Phi-3.5-vision-instruct"
     user_prompt: str = "Describe what is shown in this image."
+    user_prompt_verbose: str = "You are a metadata expert. Provide a detailed description of this image with rich context."
+    max_tokens: int = 20
     test_mode: bool = False
 
     keywords: Dict[str, List[str]] = {
