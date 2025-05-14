@@ -8,7 +8,8 @@ class Settings(BaseSettings):
     keywords: Dict[str, List[str]] = {
         "sports": ["basketball", "football", "snowboarding"],
         "automobiles": ["car", "truck", "van"],
-        "toys": ["teddy", "yo-yo", "kite"]
+        "toys": ["teddy", "yo-yo", "kite"],
+        "test": ["no variations"]
     }
 
 def get_settings():
