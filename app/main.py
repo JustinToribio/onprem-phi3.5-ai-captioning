@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from app.api.routes import router
+from app.api.routes_agent import router as agent_router
 from app.models.phi3_model import Phi3Model
 import uvicorn
 
@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     Phi3Model.unload()  # Unload the model and processor from memory
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(router)
+app.include_router(agent_router, prefix="/api")
 
 if __name__ == "__main__":
     # "app.main:app" is good format ("module:app") in practice, i.e. for reload=True to work properly
