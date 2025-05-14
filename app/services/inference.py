@@ -1,7 +1,7 @@
 from app.models.phi3_model import Phi3Model
 
-def run_caption_inference(image, user_prompt, model_id):
-    model, processor = Phi3Model.load(model_id)
+def run_caption_inference(image, user_prompt, model_id, test_mode=False):
+    model, processor = Phi3Model.load(model_id, test_mode=test_mode)
 
     # Offical docs on the inference code below: https://huggingface.co/microsoft/Phi-3.5-vision-instruct
 
@@ -27,7 +27,7 @@ def run_caption_inference(image, user_prompt, model_id):
     # temperature: >1.0 - High randomness and creativity (can get chaotic or incoherent)
     # If you're running into OOM issues, reduce max_new_tokens
     generation_args = {
-        "max_new_tokens": 100,
+        "max_new_tokens": 30 if test_mode else 100,
         "do_sample": False
     }
 

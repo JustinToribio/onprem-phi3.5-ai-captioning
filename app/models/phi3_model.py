@@ -13,7 +13,7 @@ class Phi3Model:
 
     # Allow method to be called without instantiating the class
     @classmethod
-    def load(cls, model_id: str):
+    def load(cls, model_id: str, test_mode=False):
         # If not already loaded, load the model and processor once
         # Model and artifacts are downloaded to ~/.cache/huggingface
         if cls._model is None or cls._processor is None or cls._model_id != model_id:
@@ -32,7 +32,7 @@ class Phi3Model:
             cls._processor = AutoProcessor.from_pretrained(
                 cls._model_id,
                 trust_remote_code=True,
-                num_crops=4
+                num_crops=2 if test_mode else 4,  # Use 2 crops for faster inference in test mode
             )
             print("model and processor loaded.")
         # Always return the same in-memory model and processor (singleton behavior)

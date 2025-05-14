@@ -11,7 +11,8 @@ async def lifespan(app: FastAPI):
     # Startup logic
     print("App starting up...")
     settings = get_settings()
-    Phi3Model.load(settings.model_id)  # Load the model once before the app starts serving
+    print("Test mode:", settings.test_mode)
+    Phi3Model.load(settings.model_id, test_mode=settings.test_mode)  # Load the model once before the app starts serving
 
     yield
     # Shutdown logic, yields control back to the FastAPI app
