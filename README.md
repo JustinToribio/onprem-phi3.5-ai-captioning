@@ -48,7 +48,7 @@ Example image and asset id sent to the `/api/enrich` endpoint. Caption successfu
 
 Response:
 [MAM] Updated asset nba_1 with metadata:
-```json
+```jsonc
 {
   "caption": "The image captures a moment from a basketball game between the Los Angeles Lakers and the 
   Golden State Warriors. The players are in the midst of a play, with the Lakers in purple and the Warriors in white. 
@@ -67,7 +67,7 @@ Example image and asset id sent to the `/api/enrich` endpoint. Initial caption u
 
 Response:
 [MAM] Updated asset auto_2 with metadata:
-```json
+```jsonc
 {
   "caption": "The image features a modern, silver BMW i8 sports car parked on a paved surface, 
   likely a street or a parking lot. The car has a distinctive design with a low and wide stance, 
