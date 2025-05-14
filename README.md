@@ -48,7 +48,7 @@ Example image and asset id sent to the `/api/enrich` endpoint. Caption successfu
 
 Response:
 ```jsonc
-[MAM] Updated asset nba_1 with metadata:
+"[MAM] Updated asset nba_1 with metadata:"
 
 {
   "caption": "The image captures a moment from a basketball game between the Los Angeles Lakers and the 
@@ -68,7 +68,7 @@ Example image and asset id sent to the `/api/enrich` endpoint. Initial caption u
 
 Response:
 ```jsonc
-[MAM] Updated asset auto_2 with metadata:
+"[MAM] Updated asset auto_2 with metadata:"
 
 {
   "caption": "The image features a modern, silver BMW i8 sports car parked on a paved surface, 
