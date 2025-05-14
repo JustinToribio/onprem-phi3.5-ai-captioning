@@ -30,7 +30,9 @@ def test_enrich_endpoint_real_model():
     assert "caption" in result
     assert "tags" in result
     assert result["source"] == "phi3.5"
+    assert any("second attempt" in caption for caption in result["reasoning_trace"])
 
     print("Generated caption:", result["caption"])
     print("Generated tags:", result["tags"])
     print("Source:", result["source"])    
+    print("Reasoning trace:", result["reasoning_trace"])
