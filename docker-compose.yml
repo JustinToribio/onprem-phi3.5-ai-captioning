@@ -16,6 +16,5 @@ services:
     volumes:
     # Mount the local huggingface model cache to the container's
       - ${HOME}/.cache/huggingface:/root/.cache/huggingface
-    environment:
-    # Tells Hugging Face to explicitly use the correct mounted directory as the model cache directory
-      - TRANSFORMERS_CACHE=/root/.cache/huggingface/hub
+    env_file:
+      - .env
